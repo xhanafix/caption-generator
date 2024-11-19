@@ -19,8 +19,10 @@ A modern, responsive web application that generates platform-specific captions f
 
 ## 🚀 Live Demo
 
-Visit the live application: [Social Media Caption Generator](https://xhanafix.github.io/caption-generator/)
+Visit the live application: [Social Media Caption Generator](https://yourusername.github.io/social-media-caption-generator)
 
-## 🛠️ Setup
+## 🔑 OpenRouter API Setup
 
-1. Clone the repository: 
+1. Visit [OpenRouter](https://openrouter.ai/) and create an account
+2. Generate an API key from your dashboard
+3. The application uses the following OpenRouter API endpoint:
