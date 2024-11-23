@@ -35,7 +35,7 @@ async function generateCaptions() {
     generateButton.disabled = true;
     generateButton.textContent = 'Generating...';
 
-    const platforms = ['facebook', 'twitter', 'pinterest'];
+    const platforms = ['facebook', 'twitter', 'pinterest', 'instagram'];
     for (const platform of platforms) {
         try {
             const caption = await generateCaption(contentUrl, platform);
@@ -55,7 +55,8 @@ async function generateCaption(url, platform) {
     const platformLimits = {
         facebook: 63206,
         twitter: 280,
-        pinterest: 500
+        pinterest: 500,
+        instagram: 2200
     };
 
     const prompt = `Generate a compelling ${platform} caption for the content at ${url}. 
@@ -153,11 +154,13 @@ function getCTALength(platform) {
 function getHashtagRequirements(platform) {
     switch (platform) {
         case 'facebook':
-            return "2-3 relevant hashtags (30 chars max total)";
+            return "2-3 relevant hashtags";
         case 'twitter':
-            return "1-2 impactful hashtags (20 chars max total)";
+            return "1-2 impactful hashtags";
         case 'pinterest':
-            return "4-5 relevant hashtags (50 chars max total)";
+            return "4-5 relevant hashtags";
+        case 'instagram':
+            return "8-15 relevant hashtags";
         default:
             return "";
     }
@@ -180,35 +183,14 @@ function getPlatformSpecifics(platform) {
                    "- Focus on descriptive keywords\n" +
                    "- Use 4-5 relevant hashtags\n" +
                    "- Include detailed information about the content";
+        case 'instagram':
+            return "- Maximum length: 2,200 characters\n" +
+                   "- Use line breaks for readability\n" +
+                   "- Include 8-15 relevant hashtags\n" +
+                   "- Focus on engaging storytelling";
         default:
             return "";
     }
-}
-
-// Add character counter functionality
-function updateCharCount(elementId, platform) {
-    const textarea = document.getElementById(elementId);
-    const text = textarea.value;
-    const platformLimits = {
-        facebook: 63206,
-        twitter: 280,
-        pinterest: 500
-    };
-    
-    const charCount = text.length;
-    const limit = platformLimits[platform];
-    
-    // Add or update character count display
-    let countDisplay = document.getElementById(`${elementId}Count`);
-    if (!countDisplay) {
-        countDisplay = document.createElement('div');
-        countDisplay.id = `${elementId}Count`;
-        countDisplay.className = 'char-count';
-        textarea.parentNode.insertBefore(countDisplay, textarea.nextSibling);
-    }
-    
-    countDisplay.textContent = `${charCount}/${limit} characters`;
-    countDisplay.style.color = charCount > limit ? 'red' : '#666';
 }
 
 // Add progress bar functionality
@@ -228,5 +210,25 @@ function hideProgress(platform) {
     const progressContainer = document.getElementById(`${platform}ProgressContainer`);
     if (progressContainer) {
         progressContainer.style.display = 'none';
+    }
+}
+
+// Modify updateCharCount function to remove character count display
+function updateCharCount(elementId, platform) {
+    const textarea = document.getElementById(elementId);
+    const text = textarea.value;
+    const platformLimits = {
+        facebook: 63206,
+        twitter: 280,
+        pinterest: 500,
+        instagram: 2200
+    };
+    
+    const charCount = text.length;
+    const limit = platformLimits[platform];
+    
+    // Only trim text if it exceeds the limit
+    if (charCount > limit) {
+        textarea.value = text.substring(0, limit);
     }
 } 

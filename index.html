@@ -32,7 +32,7 @@
                         <div class="progress-bar" id="facebookProgress"></div>
                     </div>
                 </div>
-                <textarea id="facebookCaption" readonly onInput="updateCharCount('facebookCaption', 'facebook')" spellcheck="false"></textarea>
+                <textarea id="facebookCaption" readonly spellcheck="false"></textarea>
                 <button onclick="copyToClipboard('facebookCaption')">Copy Caption</button>
             </div>
 
@@ -43,7 +43,7 @@
                         <div class="progress-bar" id="twitterProgress"></div>
                     </div>
                 </div>
-                <textarea id="twitterCaption" readonly onInput="updateCharCount('twitterCaption', 'twitter')" spellcheck="false"></textarea>
+                <textarea id="twitterCaption" readonly spellcheck="false"></textarea>
                 <button onclick="copyToClipboard('twitterCaption')">Copy Caption</button>
             </div>
 
@@ -54,8 +54,19 @@
                         <div class="progress-bar" id="pinterestProgress"></div>
                     </div>
                 </div>
-                <textarea id="pinterestCaption" readonly onInput="updateCharCount('pinterestCaption', 'pinterest')" spellcheck="false"></textarea>
+                <textarea id="pinterestCaption" readonly spellcheck="false"></textarea>
                 <button onclick="copyToClipboard('pinterestCaption')">Copy Caption</button>
+            </div>
+
+            <div class="platform-result">
+                <h2>Instagram</h2>
+                <div class="progress-container" id="instagramProgressContainer">
+                    <div class="progress">
+                        <div class="progress-bar" id="instagramProgress"></div>
+                    </div>
+                </div>
+                <textarea id="instagramCaption" readonly spellcheck="false"></textarea>
+                <button onclick="copyToClipboard('instagramCaption')">Copy Caption</button>
             </div>
         </div>
     </div>
