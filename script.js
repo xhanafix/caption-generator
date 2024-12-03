@@ -83,7 +83,7 @@ async function generateCaption(url, platform) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "model": "nousresearch/hermes-3-llama-3.1-405b:free",
+            "model": "google/learnlm-1.5-pro-experimental:free",
             "messages": [
                 {
                     "role": "user",
