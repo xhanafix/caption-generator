@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Caption Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+            <input type="checkbox" id="themeToggle">
+            <div class="slider round"></div>
+        </label>
+        <em>Dark Mode</em>
+    </div>
+
+    <div class="container">
+        <h1>Social Media Caption Generator</h1>
+        
+        <!-- API Key Section -->
+        <div class="api-section" id="apiSection">
+            <h2>Enter Your OpenRouter API Key</h2>
+            <input type="password" id="apiKey" placeholder="Enter API Key">
+            <div class="api-buttons">
+                <button onclick="saveApiKey()">Save API Key</button>
+                <button onclick="clearApiKey()" class="clear-button">Clear API Key</button>
+            </div>
+        </div>
+
+        <!-- Caption Generator Section -->
+        <div class="generator-section">
+            <h2>Generate Captions</h2>
+            <input type="text" id="topic" placeholder="Enter your topic or title">
+            <select id="toneSelect">
+                <option value="professional">Professional</option>
+                <option value="casual">Casual</option>
+                <option value="friendly">Friendly</option>
+                <option value="authoritative">Authoritative</option>
+            </select>
+            <button onclick="generateCaptions()" id="generateButton">Generate Captions</button>
+
+            <div id="progressContainer" class="progress-container" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress" id="progressBar"></div>
+                </div>
+                <div class="progress-text" id="progressText">Generating captions...</div>
+            </div>
+
+            <div class="results">
+                <div class="platform-result">
+                    <h3>Facebook</h3>
+                    <textarea id="facebookCaption" readonly></textarea>
+                    <button onclick="copyContent('facebookCaption')">Copy</button>
+                </div>
+
+                <div class="platform-result">
+                    <h3>Twitter</h3>
+                    <textarea id="twitterCaption" readonly></textarea>
+                    <button onclick="copyContent('twitterCaption')">Copy</button>
+                </div>
+
+                <div class="platform-result">
+                    <h3>Instagram</h3>
+                    <textarea id="instagramCaption" readonly></textarea>
+                    <button onclick="copyContent('instagramCaption')">Copy</button>
+                </div>
+
+                <div class="platform-result">
+                    <h3>Pinterest</h3>
+                    <textarea id="pinterestCaption" readonly></textarea>
+                    <button onclick="copyContent('pinterestCaption')">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="blogGenerator.js"></script>
+</body>
+</html> 
